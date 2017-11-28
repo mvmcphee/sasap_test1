@@ -3,8 +3,9 @@ First attempt at creating github repository
 
 The md file is a 'markdown' file, similar to rmd but a bit more complicated (for publishing). 
 #How to make a list
-- apples
+- apple
   + fuji
-  + honeydew
-- bananans
-- oranges
+  + honeycrisp
+- banana
+- orange
+- pineapple
