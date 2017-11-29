@@ -10,3 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # My Website
+
+# Can I insert a picture?
+image: ![](bigfry.PNG)
