@@ -6,11 +6,12 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
 # My Website
+https://mvmcphee.github.io/sasap_test1/
 
 # Can I insert a picture?
 fry: ![](bigfry.PNG)
@@ -19,12 +20,14 @@ fry: ![](bigfry.PNG)
 ADFG_firstattempt_reformatted <- read.csv ("knb.92020.1.csv")
 ```
 
-```{r}
-library (dplyr)
-library (tidyr)
-library (leaflet)
-library (DT)
-library (ggplot2)
+```{r, include = FALSE}
+suppressPackageStartupMessages({
+  library (dplyr)
+  library (tidyr)
+  library (leaflet)
+  library (DT)
+  library (ggplot2)})
+
 ```
 
 ```{r}
