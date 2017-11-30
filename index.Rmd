@@ -7,9 +7,40 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
 # My Website
 
 # Can I insert a picture?
-image: ![](bigfry.PNG)
+fry: ![](bigfry.PNG)
+
+```{r}
+ADFG_firstattempt_reformatted <- read.csv ("knb.92020.1.csv")
+```
+
+```{r}
+library (dplyr)
+library (tidyr)
+library (leaflet)
+library (DT)
+library (ggplot2)
+```
+
+```{r}
+# Median annual escapement by species
+median_esc <- ADFG_firstattempt_reformatted %>% 
+  separate(sampleDate, c("Year", "Month", "Day"), sep = "-") %>% 
+  group_by(Species, Year, Location) %>% 
+  summarize(escapement = sum(DailyCount))
+median_esc <- median_esc %>% 
+  group_by(Species) %>% 
+  summarize(median_escapement = median(escapement))
+
+median_esc
+```
+```{r}
+ggplot(median_esc, aes(Species, median_escapement)) +
+  geom_col() +
+  coord_flip()
+```
