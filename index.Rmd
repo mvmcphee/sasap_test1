@@ -32,7 +32,7 @@ library (ggplot2)
 median_esc <- ADFG_firstattempt_reformatted %>% 
   separate(sampleDate, c("Year", "Month", "Day"), sep = "-") %>% 
   group_by(Species, Year, Location) %>% 
-  summarize(escapement = sum(DailyCount))
+  summarize(escapement = sum(DailyCount, na.rm = TRUE))
 median_esc <- median_esc %>% 
   group_by(Species) %>% 
   summarize(median_escapement = median(escapement))
@@ -44,3 +44,24 @@ ggplot(median_esc, aes(Species, median_escapement)) +
   geom_col() +
   coord_flip()
 ```
+
+
+
+```{r}
+datatable (median_esc)
+```
+
+```{r}
+#using leaflet to make interactive map
+locations <- ADFG_firstattempt_reformatted %>%
+  distinct(Location, Latitude, Longitude) %>%
+  drop_na()
+
+leaflet (locations) %>%
+  addTiles() %>%
+ addMarkers (~ -abs(Longitude), ~ Latitude, popup = ~ Location)
+```
+
+  
+  
+  
